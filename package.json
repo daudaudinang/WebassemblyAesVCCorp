@@ -1,0 +1,19 @@
+{
+  "name": "webassembly-aes",
+  "version": "1.0.0",
+  "description": "1. aes.c + aes.h: Thư viện TinyAes để mã hoá và giải mã\r 2. hextools: Chuyển từ bytearray sang bytearray string để chuyển đi (Do ta không thể return array trong C nên ta cần chuyển về định dạng phù hợp để truyền đi).\r 3. pkcs7_padding: Do TinyAes chỉ hỗ trợ những chuỗi có độ dài là bộ số của 16, không hỗ trợ thêm bớt padding tự động nên ta cần Library này để thêm và bớt padding theo pkcs7 đối với những plain text độ dài không phải bội số của 16.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "emcc src/crypto.c -Oz -s WASM=0 --memory-init-file 0 -s ENVIRONMENT='web,worker' -o dist/aes.js -s EXPORTED_FUNCTIONS=['_encryptAES_CBC'] -s EXPORTED_RUNTIME_METHODS=['cwrap'] -s ALLOW_MEMORY_GROWTH=1 -s EXPORT_ES6=1 -s MODULARIZE=1 -s USE_ES6_IMPORT_META=0"  
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daudaudinang/WebassemblyAes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daudaudinang/WebassemblyAes/issues"
+  },
+  "homepage": "https://github.com/daudaudinang/WebassemblyAes#readme"
+}
